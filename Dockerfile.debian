@@ -1,0 +1,19 @@
+FROM debian:10-slim
+
+# Install dependencies and Quantum Espresso
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        gfortran \
+        libopenmpi-dev \
+        openmpi-bin \
+        libblas3 \
+        liblapack3 \
+        libfftw3-3 \
+        libfftw3-dev \
+        libxc-dev \
+        libgfortran4 \
+        quantum-espresso \
+        && rm -rf /var/lib/apt/lists/*
+
+# Set the entry point to the Quantum Espresso binary
+ENTRYPOINT ["pw.x"]

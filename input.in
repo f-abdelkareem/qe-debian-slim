@@ -1,0 +1,27 @@
+&CONTROL
+  calculation = 'scf'
+  prefix = 'minimal'
+  pseudo_dir = './'
+  outdir = './'
+  tprnfor = .true.   ! Optional: Enable output of wavefunction files
+  tstress = .true.   ! Optional: Enable output of stress tensor
+/
+&SYSTEM
+  ibrav = 2
+  celldm(1) = 10.0
+  nat = 1
+  ntyp = 1
+  ecutwfc = 30.0
+  occupations = 'smearing'
+  smearing = 'methfessel-paxton'   ! Choose the smearing method
+  degauss = 0.02                   ! Smearing parameter (adjust as needed)
+/
+&ELECTRONS
+  mixing_beta = 0.7     ! Optional: Mixing parameter for charge density
+/
+ATOMIC_SPECIES
+   H 1.0 H.pbe-rrkjus.UPF
+ATOMIC_POSITIONS crystal
+   H 0.0 0.0 0.0
+K_POINTS automatic
+   4 4 4 0 0 0

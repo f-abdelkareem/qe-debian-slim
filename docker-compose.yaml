@@ -1,0 +1,10 @@
+version: '3'
+services:
+  quantum-espresso:
+    image: <image-name>:<image-tag>
+    volumes:
+      - ./input.in:/workdir/input.in
+      - ./output.txt:/workdir/output.txt
+      - ./H.pbe-rrkjus.UPF:/workdir/H.pbe-rrkjus.UPF
+    working_dir: /workdir
+    command: ["pw.x", "-in", "input.in", ">", "output.txt"]
